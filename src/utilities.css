@@ -1,0 +1,13 @@
+.active {
+  background: #0076ff;
+}
+
+.dark\:bg-gray-800 {
+  background-image: linear-gradient(to bottom, #0a69da, #0856c8, #0231a5);
+}
+
+.dark\:bg-gray-700 {
+  background-color: #191d230d;
+  color: black;
+  border-radius: 30rem;
+}
