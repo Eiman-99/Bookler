@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    console.log("Request sent to:", config.url);
+    // console.log("Request sent to:", config.url);
     // You can show a loader here
     return config;
   },
@@ -18,12 +18,12 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log("Response received from:", response.config.url);
+    // console.log("Response received from:", response.config.url);
     // You can hide the loader here
     return response;
   },
   (error) => {
-    console.error("Response error:", error.response?.status);
+    // console.error("Response error:", error.response?.status);
     // You can show a global error alert here
     return Promise.reject(error);
   }
