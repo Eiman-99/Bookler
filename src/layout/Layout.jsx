@@ -1,4 +1,4 @@
-import { SideNav } from "../components/sidenav/SideNav";
+import { SideNav } from "../components/SideNav/SideNav";
 import { Outlet } from "react-router-dom";
 import banner from "../assets/banner.png";
 import CustomNavbar from "../components/Navbar/CustomNavbar";
