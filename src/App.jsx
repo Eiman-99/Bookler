@@ -6,6 +6,7 @@ import MyBookings from "./pages/MyBookings/MyBookings";
 import Hotels from "./pages/Hotels/Hotels";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import HotelsSearch from "./pages/HotelsSearch/HotelsSearch";
 function App() {
   return (
     <Routes>
@@ -15,6 +16,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="mybookings" element={<MyBookings />} />
         <Route path="hotels" element={<Hotels />} />
+        <Route path="/search" element={<HotelsSearch />} />
       </Route>
     </Routes>
   );

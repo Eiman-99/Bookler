@@ -1,58 +1,86 @@
 import { Button, Select, TextInput, Label, Datepicker } from "flowbite-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function SearchCard() {
+  const [search, setSearch] = useState("");
+  const [country, setCountry] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+
+    if (search.trim()) {
+      params.append("q", search.trim());
+    }
+
+    if (country) {
+      params.append("address.countryIsoCode", country);
+    }
+
+    navigate(`/search?${params.toString()}`);
+  };
+
+  const handleClear = () => {
+    setSearch("");
+    setCountry("");
+    navigate("/search");
+  };
+
   return (
-    <div className="bg-white shadow-md rounded-2xl px-6 py-6 flex flex-col gap-6 max-w-5xl mx-auto lg:flex-row lg:items-center lg:gap-4 lg:-mt-12">
-      {/* Search Input */}
-      <div className="flex flex-col">
-        <Label
-          value="Search"
-          className="text-xs uppercase text-gray-400 mb-1"
-        />
-        <TextInput
-          type="text"
-          placeholder="Hotel Haramain"
-          className="w-full lg:w-48"
-        />
-      </div>
+    <div className="bg-white shadow-lg rounded-2xl px-6 py-8 max-w-6xl mx-auto -mt-12">
+      <div className="flex flex-col gap-6 md:flex-row md:flex-wrap md:items-end md:gap-4">
+        {/* Search Input */}
+        <div className="flex flex-col flex-1 min-w-[180px]">
+          <Label
+            value="Search"
+            className="text-xs uppercase text-gray-500 mb-1"
+          />
+          <TextInput
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-      {/* Country Select */}
-      <div className="flex flex-col">
-        <Label
-          value="Country"
-          className="text-xs uppercase text-gray-400 mb-1"
-        />
-        <Select className="w-full lg:w-48">
-          <option>Egypt</option>
-          <option>Saudi Arabia</option>
-          <option>UAE</option>
-        </Select>
-      </div>
+        {/* Country Filter */}
+        <div className="flex flex-col flex-1 min-w-[180px]">
+          <Label
+            value="Country"
+            className="text-xs uppercase text-gray-500 mb-1"
+          />
+          <Select value={country} onChange={(e) => setCountry(e.target.value)}>
+            <option value="">Select Country</option>
+            <option value="EG">Egypt</option>
+            <option value="SA">Saudi Arabia</option>
+            <option value="AE">UAE</option>
+          </Select>
+        </div>
 
-      {/* Check-in Date */}
-      <div className="flex flex-col">
-        <Label
-          value="Check-in"
-          className="text-xs uppercase text-gray-400 mb-1"
-        />
-        <Datepicker className="w-full lg:w-48" placeholder="21 Aug '19" />
-      </div>
+        {/* Date Picker */}
+        <div className="flex flex-col flex-1 min-w-[180px]">
+          <Label
+            value="Check-in"
+            className="text-xs uppercase text-gray-500 mb-1"
+          />
+          <Datepicker placeholder="21 Aug '19" />
+        </div>
 
-      {/* Button group */}
-      <div className="flex justify-between items-center gap-4 mt-2 lg:ml-auto lg:mt-0">
-        <Button
-          color="gray"
-          className="font-semibold bg-transparent hover:bg-gray-100 text-black shadow-none"
-        >
-          Clear Filters
-        </Button>
-
-        <Button
-          color="failure"
-          className="rounded-full px-6 py-2 font-semibold"
-        >
-          Search
-        </Button>
+        <div className="flex gap-4 mt-2 md:mt-0 md:ml-auto">
+          <Button
+            className="bg-transparent hover:bg-gray-100 text-gray-700 font-semibold shadow-none border border-gray-300 cursor-pointer"
+            onClick={handleClear}
+          >
+            Clear Filters
+          </Button>
+          <Button
+            className="bg-[#DF142D] hover:bg-[red-700] text-white rounded-full px-6 py-2 font-semibold cursor-pointer"
+            onClick={handleSearch}
+          >
+            Search
+          </Button>
+        </div>
       </div>
     </div>
   );
