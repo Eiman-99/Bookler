@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 function HotelCard({ hotel }) {
   const { name, address, amenities, images, pricing, rating } = hotel;
   const { discountedPrice, discount, currency } = pricing[0];
   const displayPrice = `${currency} ${discountedPrice}`;
 
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate(`/booking/${hotel.id}`);
+  }
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden">
       <div className="h-48 md:h-auto md:w-1/3">
@@ -49,7 +55,10 @@ function HotelCard({ hotel }) {
           <button className="flex-1 text-sm border border-gray-300 rounded px-3 py-1 hover:bg-gray-100">
             View Details
           </button>
-          <button className="flex-1 text-sm bg-blue-600 text-white rounded px-4 py-1 hover:bg-blue-700">
+          <button
+            className="flex-1 text-sm bg-blue-600 text-white rounded px-4 py-1 hover:bg-blue-700 cursor-pointer"
+            onClick={handleClick}
+          >
             BOOK NOW
           </button>
         </div>

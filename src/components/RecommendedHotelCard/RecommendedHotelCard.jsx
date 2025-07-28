@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 function RecommendedHotelCard({ hotel }) {
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate(`/booking/${hotel.id}`);
+  }
   return (
     <div className="h-72 bg-white shadow-sm hover:shadow-md transition cursor-pointer rounded-xl p-4 flex flex-col justify-between">
       <div>
@@ -16,7 +22,10 @@ function RecommendedHotelCard({ hotel }) {
         </p>
       </div>
 
-      <button className="bg-red-100 text-red-500 text-sm px-4 py-1 rounded-full hover:bg-red-200 transition self-start cursor-pointer">
+      <button
+        className="bg-red-100 text-red-500 text-sm px-4 py-1 rounded-full hover:bg-red-200 transition self-start cursor-pointer"
+        onClick={handleClick}
+      >
         Book Now
       </button>
     </div>
