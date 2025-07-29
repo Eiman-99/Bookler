@@ -5,8 +5,12 @@ import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { getHotelDetails } from "../../api/hotelDetails";
+import { useDispatch } from "react-redux";
+import { addBooking } from "../../redux/bookingsSlice";
 
 function Booking() {
+  const dispatch = useDispatch();
+
   const { id } = useParams();
   const {
     register,
@@ -45,7 +49,6 @@ function Booking() {
       setValue("email", user.email);
       setValue("mobile", user.phone);
       setValue("country", user.country || "Egypt");
-      setValue("cardHolder", `${user.firstName} ${user.lastName}`);
     }
   }, [user, setValue]);
 
@@ -54,14 +57,18 @@ function Booking() {
       alert("Please select check-in and check-out dates.");
       return;
     }
-    setShowSuccess(true);
-    console.log("Booking successful!", {
+
+    const bookingData = {
       ...data,
-      fromDate,
-      toDate,
-      hotel,
+      fromDate: fromDate.toDateString(),
+      toDate: toDate.toDateString(),
+
       total,
-    });
+      hotel,
+    };
+
+    dispatch(addBooking(bookingData));
+    setShowSuccess(true);
   };
 
   if (!hotel)
@@ -259,7 +266,7 @@ function Booking() {
             <strong>Check Out:</strong> {toDate?.toDateString() || "–"}
           </p>
           <p>
-            <strong>Price Per Night:</strong> ${hotel.pricing[0].originalPrice}
+            <strong>Price Per Night:</strong> ${hotel.pricePerNight}
           </p>
           <p>
             <strong>Nights:</strong> {getNights()}
