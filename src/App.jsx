@@ -21,7 +21,7 @@ function App() {
         <Route path="hotels" element={<Hotels />} />
         <Route path="search" element={<HotelsSearch />} />
         <Route path="booking/:id" element={<Booking />} />
-        <Route path="details/:id" element={<HotelDetails />} />
+        <Route path="hotels/details/:id" element={<HotelDetails />} />
         <Route path="mybookings" element={<MyBookings />} />
         <Route path="*" element={<NotFound />} />
       </Route>

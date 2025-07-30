@@ -266,7 +266,7 @@ function Booking() {
             <strong>Check Out:</strong> {toDate?.toDateString() || "–"}
           </p>
           <p>
-            <strong>Price Per Night:</strong> ${hotel.pricePerNight}
+            <strong>Price Per Night:</strong> ${hotel.pricing[0].originalPrice}
           </p>
           <p>
             <strong>Nights:</strong> {getNights()}

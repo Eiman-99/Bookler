@@ -9,6 +9,10 @@ function HotelCard({ hotel }) {
   function handleClick() {
     navigate(`/booking/${hotel.id}`);
   }
+  function handleDetails() {
+    navigate(`details/${hotel.id}`);
+  }
+
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden">
       <div className="h-48 md:h-auto md:w-1/3">
@@ -52,7 +56,10 @@ function HotelCard({ hotel }) {
         </div>
 
         <div className="mt-3 flex gap-2 flex-wrap">
-          <button className="flex-1 text-sm border border-gray-300 rounded px-3 py-1 hover:bg-gray-100">
+          <button
+            className="flex-1 text-sm border border-gray-300 rounded px-3 py-1 hover:bg-gray-100 cursor-pointer"
+            onClick={handleDetails}
+          >
             View Details
           </button>
           <button
