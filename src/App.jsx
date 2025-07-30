@@ -10,6 +10,7 @@ import HotelsSearch from "./pages/HotelsSearch/HotelsSearch";
 import Booking from "./pages/Booking/Booking";
 import NotFound from "./pages/NotFound/NotFound";
 import HotelDetails from "./pages/HotelDetails/HotelDetails";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 function App() {
   return (
     <Routes>
@@ -17,7 +18,14 @@ function App() {
       <Route path="login" element={<Login />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="mybookings" element={<MyBookings />} />
+        <Route
+          path="mybookings"
+          element={
+            <ProtectedRoute>
+              <MyBookings />
+            </ProtectedRoute>
+          }
+        />
         <Route path="hotels" element={<Hotels />} />
         <Route path="search" element={<HotelsSearch />} />
         <Route path="booking/:id" element={<Booking />} />
