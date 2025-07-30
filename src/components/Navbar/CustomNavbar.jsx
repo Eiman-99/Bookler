@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { FaHotel, FaHome, FaTaxi, FaPlane } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { MdHotel } from "react-icons/md";
+import { RiTaxiFill } from "react-icons/ri";
+import { RiFlightTakeoffFill } from "react-icons/ri";
 
 function CustomNavbar() {
   return (
@@ -12,7 +15,7 @@ function CustomNavbar() {
           }`
         }
       >
-        <FaHotel className="text-2xl" />
+        <MdHotel className="text-2xl" />
         <span className="text-xs font-medium tracking-wide">HOTEL</span>
       </NavLink>
 
@@ -22,12 +25,12 @@ function CustomNavbar() {
       </a>
 
       <a>
-        <FaTaxi className="text-2xl" />
+        <RiTaxiFill className="text-2xl" />
         <span className="text-xs font-medium tracking-wide">TAXI</span>
       </a>
 
       <a>
-        <FaPlane className="text-2xl" />
+        <RiFlightTakeoffFill className="text-2xl" />
         <span className="text-xs font-medium tracking-wide">FLIGHTS</span>
       </a>
     </div>

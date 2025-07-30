@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import {
-  HiArrowSmRight,
-  HiHome,
-  HiShoppingBag,
-  HiTicket,
-  HiMenuAlt2,
-} from "react-icons/hi";
+import { HiArrowSmRight, HiHome, HiMenuAlt2 } from "react-icons/hi";
+import { BsFilePersonFill } from "react-icons/bs";
+import { FaEarthAmericas } from "react-icons/fa6";
+import { MdContactSupport } from "react-icons/md";
 import cloudImg from "../../assets/cloud.png";
 import logo from "../../assets/logo.png";
 import { useSelector } from "react-redux";
@@ -51,17 +48,17 @@ export function SideNav() {
           to="/mybookings"
           className="flex items-center gap-3 p-2 rounded-md hover:bg-blue-600"
         >
-          <HiTicket size={20} />
+          <BsFilePersonFill size={20} />
           {isExpanded && <span>My Bookings</span>}
         </NavLink>
 
         <a className="flex items-center gap-3 p-2 rounded-md hover:bg-blue-600">
-          <HiShoppingBag size={20} />
+          <FaEarthAmericas size={20} />
           {isExpanded && <span>Explore</span>}
         </a>
 
         <a className="flex items-center gap-3 p-2 rounded-md hover:bg-blue-600">
-          <HiArrowSmRight size={20} />
+          <MdContactSupport size={20} />
           {isExpanded && <span>Support</span>}
         </a>
       </div>
